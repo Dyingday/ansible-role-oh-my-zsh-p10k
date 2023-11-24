@@ -17,7 +17,6 @@
   when: users is defined
 
 - name: clone oh-my-zsh for users
-  become: yes
   git:
     repo: 'https://github.com/robbyrussell/oh-my-zsh.git'
     version: master
@@ -26,7 +25,6 @@
   when: userinfo is defined
 
 - name: clone powerlevel10k for users
-  become: yes
   git:
     repo: 'https://github.com/romkatv/powerlevel10k.git'
     version: master
@@ -35,7 +33,6 @@
   when: userinfo is defined
 
 - name: clone zsh-autosuggestions for users
-  become: yes
   git:
     repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
     version: master
@@ -44,7 +41,6 @@
   when: userinfo is defined
 
 - name: clone zsh-syntax-highlighting for users
-  become: yes
   git:
     repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
     version: master
@@ -53,7 +49,6 @@
   when: userinfo is defined
 
 - name: write .zshrc for users
-  become: yes
   template:
     src: "{{ zshrc_src_template }}"
     dest: '{{ item.home }}/.zshrc'
@@ -65,7 +60,6 @@
   when: userinfo is defined
 
 - name: write .p10k.zsh for users
-  become: yes
   copy:
     src: "{{ p10k_src_file }}"
     dest: '{{ item.home }}/.p10k.zsh'
